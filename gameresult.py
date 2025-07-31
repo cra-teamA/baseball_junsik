@@ -1,8 +1,9 @@
 class GameResult:
-    def __init__(self,solved,strikes,balls):
+    def __init__(self, solved, strikes, balls):
         self._solved = solved
         self._strikes = strikes
         self._balls = balls
+
     @property
     def strikes(self):
         return self._strikes
