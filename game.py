@@ -16,8 +16,7 @@ class Game:
 
     def guess(self, guess_number: str) -> GameResult | None:
         self._assert_illegal_value(guess_number)
-        strikes = self.check_strikes(guess_number)
-        balls = self.check_balls(guess_number, strikes)
+        strikes, balls = self.check_strikes_and_balls(guess_number)
         result = True if strikes==3 else 0
 
         return GameResult(solved=result, strikes=strikes, balls=balls)
@@ -27,11 +26,13 @@ class Game:
         balls = len(볼후보) - strikes
         return balls
 
-    def check_strikes(self, guess_number):
-        strikes = 0
+    def check_strikes_and_balls(self, guess_number):
+        strikes = balls = 0
         for i, j in zip(guess_number, self._question):
             strikes += i == j
-        return strikes
+            balls += i in self._question
+        realball = balls - strikes
+        return strikes, realball
 
     def _assert_illegal_value(self, guess_number):
         if guess_number is None:

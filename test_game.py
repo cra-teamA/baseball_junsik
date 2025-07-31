@@ -2,11 +2,9 @@ import pytest
 from game import Game
 from gameresult import GameResult
 
-
 @pytest.fixture
 def game():
     return Game()
-
 
 def assert_illegal_argument(game, guess_number):
     try:
