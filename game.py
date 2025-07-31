@@ -1,2 +1,3 @@
 class Game:
-    pass
+    def guess(self, param):
+        raise TypeError()

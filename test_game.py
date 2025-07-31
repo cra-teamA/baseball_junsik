@@ -1,4 +1,8 @@
+import pytest
 
+from game import Game
 
 def test_game():
-    pass
+    game = Game()
+    with pytest.raises(TypeError):
+        game.guess(None)
