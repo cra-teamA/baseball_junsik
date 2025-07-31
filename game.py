@@ -1,3 +1,4 @@
 class Game:
-    def guess(self, param):
-        raise TypeError()
+    def guess(self, guessNumber):
+        if guessNumber is None:
+            raise TypeError()

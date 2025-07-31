@@ -2,7 +2,12 @@ import pytest
 
 from game import Game
 
-def test_game():
+@pytest.fixture
+def game():
+    return Game
+
+
+def test_exeption_when_input_is_none(game):
     game = Game()
     with pytest.raises(TypeError):
         game.guess(None)
