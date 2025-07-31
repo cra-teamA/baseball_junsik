@@ -8,13 +8,15 @@ def game():
     return Game
 
 
-def test_exeption_when_input_is_none(game):
-    game = Game()
-    with pytest.raises(TypeError):
-        game.guess(None)
+def assert_illegal_argument(game, guessNumber):
+    try:
+        game.guess(guessNumber)
+        pytest.fail()
+    except TypeError:
+        pass
 
 
-def test_exeption_when_input_len_unmatched(game):
-    game = Game()
-    with pytest.raises(TypeError):
-        game.guess("12")
+def test_exeption_when_invalid_input(game):
+    assert_illegal_argument(game, None)
+    assert_illegal_argument(game, "12")
+
