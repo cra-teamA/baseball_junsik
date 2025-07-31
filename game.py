@@ -3,6 +3,23 @@ from gameresult import GameResult
 
 class Game:
 
+    def __init__(self):
+        self._question = ""
+
+    @property
+    def question(self):
+        raise AttributeError("이거못읽으세여")
+
+    @question.setter
+    def question(self, value):
+        self._question = value
+
+    def guess(self, guess_number: str) -> GameResult | None:
+        self._assert_illegal_value(guess_number)
+        if guess_number == self._question:
+            return GameResult(True, 3, 0)
+        return None
+
     def _assert_illegal_value(self, guess_number):
         if guess_number is None:
             raise TypeError("입력이 None 이네여?")
@@ -15,7 +32,3 @@ class Game:
 
     def _is_duplicate_number(self, guess_number: str):
         return len(set(guess_number)) != 3
-
-    def guess(self, guess_number: str):
-        self._assert_illegal_value(guess_number)
-        return GameResult(True,3,0)
