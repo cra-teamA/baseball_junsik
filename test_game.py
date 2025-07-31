@@ -8,9 +8,9 @@ def game():
     return Game
 
 
-def assert_illegal_argument(game, guessNumber):
+def assert_illegal_argument(game, guess_number):
     try:
-        game.guess(guessNumber)
+        game.guess(guess_number)
         pytest.fail()
     except TypeError:
         pass
@@ -21,4 +21,4 @@ def test_exeption_when_invalid_input(game):
     assert_illegal_argument(game, "12")
     assert_illegal_argument(game, "1234")
     assert_illegal_argument(game, "12s")
-
+    assert_illegal_argument(game, "121")
